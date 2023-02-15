@@ -1,21 +1,25 @@
 import { create } from 'zustand';
 
+export type fontType = {
+  id?: number;
+  text: string;
+  value: 'openSans' | 'nunito' | 'montserrat' | 'ubuntu' | 'poppins' | 'roboto';
+};
+
 interface BearState {
-  bears: number;
+  font: fontType;
   actions: {
-    increasePopulation: (by: number) => void;
-    removeAllBears: () => void;
+    setFont: (newFont: fontType) => void;
   };
 }
 
-const useBearStore = create<BearState>()((set) => ({
-  bears: 0,
+const useFontStore = create<BearState>()((set) => ({
+  font: { text: 'Ubuntu', value: 'ubuntu' },
 
   actions: {
-    increasePopulation: (by) => set((state) => ({ bears: state.bears + by })),
-    removeAllBears: () => set({ bears: 0 }),
+    setFont: (newFont) => set(() => ({ font: newFont })),
   },
 }));
 
-export const useBears = () => useBearStore((state) => state.bears);
-export const useBearActions = () => useBearStore((state) => state.actions);
+export const useFont = () => useFontStore((state) => state.font);
+export const useFontActions = () => useFontStore((state) => state.actions);
