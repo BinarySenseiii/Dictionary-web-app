@@ -9,14 +9,12 @@ export const useNavStyles = createStyles((theme) => ({
     width: '140px!important',
   },
 
-  item: {
-    '&[data-hovered]': {
-      backgroundColor: 'transparent',
-      color: theme.colorScheme === 'dark' ? theme.white : theme.colors.dark,
-    },
-  },
-
   active: {
-    backgroundColor: theme.colorScheme === 'dark' ? theme.colors.gray[8] : theme.colors.gray[1],
+    backgroundColor: theme.colors.brand[4],
+    color: theme.white,
+
+    '&:hover': {
+      backgroundColor: theme.colors.brand[4],
+    },
   },
 }));

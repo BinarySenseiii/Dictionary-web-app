@@ -3,7 +3,7 @@ import { create } from 'zustand';
 export type fontType = {
   id?: number;
   text: string;
-  value: 'openSans' | 'nunito' | 'montserrat' | 'ubuntu' | 'poppins' | 'roboto';
+  value: 'openSans' | 'nunito' | 'montserrat' | 'ubuntu' | 'poppins' | 'roboto' | 'julee';
 };
 
 interface BearState {
@@ -14,7 +14,7 @@ interface BearState {
 }
 
 const useFontStore = create<BearState>()((set) => ({
-  font: { text: 'Ubuntu', value: 'ubuntu' },
+  font: { text: 'Open Sans', value: 'openSans' },
 
   actions: {
     setFont: (newFont) => set(() => ({ font: newFont })),

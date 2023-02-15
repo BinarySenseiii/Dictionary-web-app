@@ -6,7 +6,7 @@ export const customColors: MantineThemeOverride['colors'] = {
     '#ffb3b8',
     '#fc8389',
     '#f9525a',
-    '#f6222d',
+    '#9856d6',
     '#dd0913',
     '#ad040e',
     '#7c0109',

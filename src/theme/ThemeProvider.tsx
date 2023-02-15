@@ -28,6 +28,8 @@ const MantineThemeProvider: React.FC<ThemeProviderProps> = ({
           },
           fontFamily: fonts[value],
           headings: { fontFamily: fonts[value] },
+          primaryColor: 'brand',
+          primaryShade: 4,
         }}
         withGlobalStyles
         withNormalizeCSS
