@@ -1,20 +1,22 @@
-import { Stack, Text, Title } from '@mantine/core';
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useState } from 'react';
+import { Text } from '@mantine/core';
 import SearchInput from '@/components/SearchInput';
+import { DictionaryResult } from '@/types/dictionary';
 
-const HomePage: React.FC = () => (
-  <>
-    <SearchInput />
+const HomePage: React.FC = () => {
+  const [searchWord, setSearchWord] = useState<string>('keyboard');
+  const { data, isLoading } = useQuery<DictionaryResult[]>({
+    queryKey: [searchWord],
+    enabled: !!searchWord,
+  });
 
-    <Stack mt="xl">
-      <Text>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, obcaecati, magni doloremque
-        cum quod rem, officia repellendus maxime magnam quasi ducimus atque illum? Dolore fugit
-        repellat et quasi ipsa quidem?
-      </Text>
+  return (
+    <>
+      <SearchInput isLoading={isLoading} setSearchWord={setSearchWord} />
 
-      <Title>Hello world</Title>
-    </Stack>
-  </>
-);
+      {isLoading ? 'loading...' : <Text>{data && data[0].word}</Text>}
+    </>
+  );
+};
 export default HomePage;
