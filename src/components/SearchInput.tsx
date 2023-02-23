@@ -1,7 +1,7 @@
 import { Box, Loader, TextInput } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { IconSearch } from '@tabler/icons';
-import React from 'react';
+import React, { memo } from 'react';
 import { z } from 'zod';
 
 const schema = z.object({
@@ -19,12 +19,12 @@ const SearchInput: React.FC<ISearchInputProps> = ({ setSearchWord, isLoading }) 
   const form = useForm({
     validate: zodResolver(schema),
     initialValues: {
-      query: 'keyboard',
+      query: '',
     },
   });
 
-  const handleSubmit = (values: formValues) => {
-    setSearchWord(values.query);
+  const handleSubmit = ({ query }: formValues) => {
+    setSearchWord(query);
     form.reset();
   };
 
@@ -47,4 +47,4 @@ const SearchInput: React.FC<ISearchInputProps> = ({ setSearchWord, isLoading }) 
     </Box>
   );
 };
-export default SearchInput;
+export default memo(SearchInput);

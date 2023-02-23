@@ -41,7 +41,7 @@ export default function QueryWrapper({
         defaultOptions: {
           queries: {
             refetchOnWindowFocus: false,
-            retry: 3,
+            retry: 0,
             staleTime: 30000,
             refetchInterval: false,
             queryFn: fetchDefinationFn,
